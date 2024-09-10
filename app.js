@@ -126,7 +126,21 @@ document.getElementById("guardarBtn").addEventListener("click", function () {
         mostrarError("telefono", resultadoTelefono);
         return;  // Detener la ejecución si el teléfono no es válido
     }
+    
+    // Validación de la fecha de nacimiento
+    const resultadoFechaNacimiento = validarFechaNacimiento(fechaNacimiento);
+    if (resultadoFechaNacimiento !== true) {
+        mostrarError ("fechaNacimiento", resultadoFechaNacimiento);
+        return;
+    }
 
+    // Validación de los comentarios
+    const resultadoComentarios = validarComentarios(comentarios);
+    if (resultadoComentarios !== true) {
+        mostrarError("comentarios", resultadoComentarios);
+        return;
+    } 
+    
     // Validación de otros campos
     if (!nombres) { mostrarError("nombres", "Los nombres son requeridos."); return; }
     if (!apellidos) { mostrarError("apellidos", "Los apellidos son requeridos."); return; }
